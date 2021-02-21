@@ -5,10 +5,13 @@ import PortableText from "../components/portableText"
 import { Link } from "gatsby"
 import getYouTubeId from "get-youtube-id"
 import YouTube from "react-youtube"
+import ReactPlayer from 'react-player'
 import SEO from "../components/seo"
 //import Img from "gatsby-image"
 import "./post.css"
 import { kebabCase } from "lodash"
+import AnchorLink from "react-anchor-link-smooth-scroll"
+import { GrTextAlignFull } from "react-icons/gr";
 
 export const query = graphql`
   query($slug: String) {
@@ -50,18 +53,32 @@ const PostTemplatePage = ({ data, pageContext, location }) => {
         title={data.sanityPost.title}
         image={data.sanityPost.mainImage.asset.url}
       />
-      {data.sanityPost.youtubeurl && (
-        <div className="bg-black ">
-          <div className="max-w-3xl py-24 pb-12 mx-auto ">
-            <div className="youtubeContainer">
-              <YouTube videoId={id} />
+      <div className="bg-black ">
+        {data.sanityPost.youtubeurl && (
+          <div className="max-w-3xl py-24 pb-3 mx-auto ">
+            <div className="border-b-2 border-gray-800 youtubeContainer">
+              <ReactPlayer controls="true" width="100%" height="500px" url={data.sanityPost.youtubeurl} />
             </div>
           </div>
+        )}
+        <div className="flex items-center justify-between max-w-3xl pb-6 mx-auto">
+          <AnchorLink
+            className="z-50 flex items-center justify-between font-mono text-xl text-white border-b border-gray-100 hover:text-gray-500"
+            href="#articulo"
+          >
+            <GrTextAlignFull className="mr-2 text-base" />
+            Ver reseña
+          </AnchorLink>
+          
+          <time className="px-4 py-1 ml-2 font-mono text-sm text-gray-900 bg-white">
+            Públicado el {data.sanityPost.publishedAt}
+          </time>
         </div>
-      )}
-      <div className="relative z-20 max-w-2xl px-6 mx-auto -mt-12 text-white ">
+      </div>
+
+      <div className="relative z-20 max-w-2xl px-6 mx-auto text-white ">
         <div className="flex flex-col items-center justify-between mb-6 ">
-          <Link
+        <Link
             to="/blog"
             className="flex my-6 text-white uppercase hover:opacity-80 hover:border-white"
           >
@@ -79,16 +96,16 @@ const PostTemplatePage = ({ data, pageContext, location }) => {
               </div>
             )}
           </Link>
-          <time className="px-4 py-1 ml-2 font-mono text-sm text-gray-900 bg-white opacity-90">
-            Públicado el {data.sanityPost.publishedAt}
-          </time>
         </div>
 
-        <h1 className="my-3 mb-12 font-serif text-4xl tracking-wider text-center text-white ">
+        <h1  id="articulo" className="my-3 mb-12 font-serif text-5xl tracking-wider text-left text-white ">
           {data.sanityPost.title}
         </h1>
 
-        <article className="px-0 pb-12 mt-6 text-xl text-justify text-white break-words md:px-0 letter-light ">
+        <article
+         
+          className="px-0 pb-12 mt-6 text-xl text-justify text-white break-words md:px-0 letter-light "
+        >
           {data.sanityPost._rawArticle && (
             <PortableText blocks={data.sanityPost._rawArticle} />
           )}

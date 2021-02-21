@@ -59,7 +59,7 @@ export default function IndexPage() {
             to={`/blog`}
             partiallyActive={true}
             activeClassName="opacity-50"
-            className="mx-6 font-serif text-sm font-bold text-gray-100 lg:text-xl"
+            className="mx-6 font-serif text-sm font-bold text-gray-100 lg:text-base"
           >
             Video Blog
           </Link>
@@ -67,7 +67,7 @@ export default function IndexPage() {
             to={`/boqueixon`}
             partiallyActive={true}
             activeClassName="opacity-50"
-            className="mx-6 font-serif text-sm font-bold text-gray-100 lg:text-xl"
+            className="mx-6 font-serif text-sm font-bold text-gray-100 lg:text-base"
           >
             Boqueixon
           </Link>
@@ -78,7 +78,7 @@ export default function IndexPage() {
                 to={`/${kebabCase(node.slug.current)}`}
                 partiallyActive={true}
                 activeClassName="opacity-50"
-                className="mx-8 font-serif text-sm font-bold text-gray-100 lg:text-xl"
+                className="mx-8 font-serif text-sm font-bold text-gray-100 lg:text-base"
               >
                 {node.title}
               </Link>

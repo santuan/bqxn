@@ -2,6 +2,7 @@ import React from "react"
 //import ReactPlayer from "react-player"
 import getYouTubeId from "get-youtube-id"
 import YouTube from "react-youtube"
+import ReactPlayer from 'react-player'
 import { kebabCase } from "lodash"
 import { Link } from "gatsby"
 
@@ -50,7 +51,7 @@ const serializers = {
     youtube: ({ node }) => {
       const { url } = node
       const id = getYouTubeId(url)
-      return <YouTube videoId={id} />
+      return <ReactPlayer controls="true" width="100%" height="400px" url={url} />
     },
   },
 
