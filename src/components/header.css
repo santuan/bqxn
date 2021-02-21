@@ -1,0 +1,71 @@
+/* purgecss start ignore */
+
+header nav {
+    display: block;
+  }
+  
+  header nav a {
+    display: inline-block;
+    text-decoration: none;
+    @apply tracking-wider transition-all duration-500 border-transparent;
+  }
+  
+  @screen lg {
+    header nav a {
+      @apply text-xl;
+    }
+  }
+  
+  .headroom-wrapper {
+    position: absolute;
+  }
+  
+  .headroom {
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    position: fixed !important;
+    @apply transition-all duration-500 bg-transparent;
+  }
+  
+  @screen md {
+    .headroom {
+      @apply bg-transparent;
+    }
+  }
+  
+  .headroom--scrolled {
+    @apply bg-blue-800 shadow-lg;
+  }
+  
+  
+  .headroom--unpinned {
+    position: fixed;
+    @apply shadow-lg;
+    transform: translateY(-100%);
+  }
+  
+  /*
+  @screen md {
+    .headroom--unpinned {
+      transform: translateY(-100%);
+      background: transparent !important;
+    }
+  }
+  */
+  .headroom--pinned {
+    position: fixed;
+    transform: translateY(0%);
+  }
+  
+  body.about .headroom--pinned {
+    transform: translateY(-100%);
+  }
+  
+  body.about .headroom--unpinned {
+    transform: translateY(-100%);
+  }
+  
+  /* purgecss end ignore */
+  
