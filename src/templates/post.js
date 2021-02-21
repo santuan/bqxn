@@ -57,7 +57,7 @@ const PostTemplatePage = ({ data, pageContext, location }) => {
         {data.sanityPost.youtubeurl && (
           <div className="max-w-3xl py-24 pb-3 mx-auto ">
             <div className="border-b-2 border-gray-800 youtubeContainer">
-              <ReactPlayer controls="true" width="100%" height="500px" url={data.sanityPost.youtubeurl} />
+              <ReactPlayer controls="true" width="100%" height="400px" url={data.sanityPost.youtubeurl} />
             </div>
           </div>
         )}
